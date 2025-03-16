@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupos WhatsApp</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        button {
+            font-size: 20px;
+            padding: 15px 30px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 10px;
+            width: 250px;
+        }
+        /* Estilização das cores dos botões */
+        #coyf-gp { background-color: #25D366; }  /* Verde */
+        #chat-l7 { background-color: #007bff; }  /* Azul */
+        #chat-l7-2 { background-color: #ff0000; }  /* Vermelho */
+        
+        /* Efeito hover */
+        #coyf-gp:hover { background-color: #1ebe57; }
+        #chat-l7:hover { background-color: #0056b3; }
+        #chat-l7-2:hover { background-color: #cc0000; }
+    </style>
+</head>
+<body>
+
+    <h1>Entre nos nossos grupos do WhatsApp</h1>
+
+    <button id="coyf-gp" onclick="entrarGrupo('coyf-gp')">COYF GP</button>
+    <button id="chat-l7" onclick="entrarGrupo('chat-l7')">Chat L7 Parceria</button>
+    <button id="chat-l7-2" onclick="entrarGrupo('chat-l7-2')">Chat L7 2 Parceria</button>
+
+    <script>
+        function entrarGrupo(grupo) {
+            let links = {
+                "coyf-gp": "https://chat.whatsapp.com/DAVdgRxQ3eYKG1GOeAUBg8",
+                "chat-l7": "https://chat.whatsapp.com/CnavQR7QmtSEeqb4cGD0Ed",
+                "chat-l7-2": "https://chat.whatsapp.com/FV8vdDOwrOtI54TwpnOV8e"
+            };
+            window.location.href = links[grupo];
+        }
+    </script>
+
+</body>
+</html>
