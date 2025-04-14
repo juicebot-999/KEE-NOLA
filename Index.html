@@ -1,57 +1,223 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grupos WhatsApp</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f4;
-        }
-        button {
-            font-size: 20px;
-            padding: 15px 30px;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            margin: 10px;
-            width: 250px;
-        }
-        /* Estilização das cores dos botões */
-        #coyf-gp { background-color: #25D366; }  /* Verde */
-        #chat-l7 { background-color: #007bff; }  /* Azul */
-        #chat-l7-2 { background-color: #ff0000; }  /* Vermelho */
-        
-        /* Efeito hover */
-        #coyf-gp:hover { background-color: #1ebe57; }
-        #chat-l7:hover { background-color: #0056b3; }
-        #chat-l7-2:hover { background-color: #cc0000; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HISTÓRIA DE KEE NOLA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to right, #330000, #660000, #990000);
+      color: #f2f2f2;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    header {
+      background: linear-gradient(90deg, #ff1a1a, #cc0000);
+      padding: 50px 20px 80px;
+      text-align: center;
+      position: relative;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      box-shadow: 0 0 20px #ff0000;
+    }
+
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 50px;
+      margin: 0;
+      color: #fff;
+      text-shadow: 0 0 10px #ff4d4d;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    header p {
+      font-size: 18px;
+      color: #f5f5f5;
+      margin-top: 8px;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #ff4d4d;
+      }
+      to {
+        text-shadow: 0 0 20px #ff9999, 0 0 30px #ff3333;
+      }
+    }
+
+    .menu-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      z-index: 1000;
+    }
+
+    .menu-btn span {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+      animation: flicker 1.5s infinite alternate;
+    }
+
+    @keyframes flicker {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 260px;
+      height: 100%;
+      background-color: #330000;
+      padding-top: 70px;
+      transition: 0.3s;
+      z-index: 999;
+      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .side-menu a {
+      display: block;
+      padding: 18px 30px;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px solid #550000;
+      transition: 0.3s;
+    }
+
+    .side-menu a:hover {
+      background-color: #660000;
+      color: #ffcccc;
+      text-shadow: 0 0 10px #ff3333;
+    }
+
+    .side-menu.open {
+      left: 0;
+    }
+
+    .profile-img {
+      width: 100%;
+      max-width: 400px;
+      display: block;
+      margin: 30px auto;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+    }
+
+    .content {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+      line-height: 1.8;
+      font-size: 18px;
+    }
+
+    .content h2 {
+      color: #ff3333;
+      margin-top: 40px;
+      margin-bottom: 15px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 26px;
+      text-shadow: 0 0 10px #ff3333;
+    }
+
+    .content p {
+      text-align: justify;
+    }
+
+    ul {
+      list-style-type: square;
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #fff;
+      font-size: 16px;
+      margin-top: 60px;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0.2; }
+      100% { opacity: 1; }
+    }
+  </style>
 </head>
 <body>
 
-    <h1>Entre nos nossos grupos do WhatsApp</h1>
+  <div class="side-menu" id="sideMenu">
+    <a href="https://www.instagram.com/joao.7wzl" target="_blank">Instagram do Criador</a>
+    <a href="https://chat.whatsapp.com/GyrkZYjrmaRBJM9o9jm4p1" target="_blank">Grupo do WhatsApp do Criador</a>
+    <a href="https://whatsapp.com/channel/0029VawudkuJP210oo5vls10" target="_blank">Canal de Memes no WhatsApp</a>
+  </div>
 
-    <button id="coyf-gp" onclick="entrarGrupo('coyf-gp')">COYF GP</button>
-    <button id="chat-l7" onclick="entrarGrupo('chat-l7')">Chat L7 Parceria</button>
-    <button id="chat-l7-2" onclick="entrarGrupo('chat-l7-2')">Chat L7 2 Parceria</button>
+  <header>
+    <button class="menu-btn" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <h1>HISTÓRIA DE KEE NOLA</h1>
+    <p>A trajetória de um talento promissor</p>
+  </header>
 
-    <script>
-        function entrarGrupo(grupo) {
-            let links = {
-                "coyf-gp": "https://chat.whatsapp.com/DAVdgRxQ3eYKG1GOeAUBg8",
-                "chat-l7": "https://chat.whatsapp.com/CnavQR7QmtSEeqb4cGD0Ed",
-                "chat-l7-2": "https://chat.whatsapp.com/FV8vdDOwrOtI54TwpnOV8e"
-            };
-            window.location.href = links[grupo];
-        }
-    </script>
+  <img class="profile-img" src="https://blackstorage.store/midia/1744669018669.jpg" alt="Kee Nola">
+
+  <div class="content">
+    <h2>Início da Vida</h2>
+    <p>Kee Nola nasceu em uma cidade cheia de contrastes, onde desde cedo foi envolvido pelo som e pelas ruas. A paixão pela música começou ainda criança, inspirado pelos clássicos do rap e pelas batalhas de freestyle do bairro.</p>
+
+    <h2>Primeiros Passos</h2>
+    <p>Com um celular velho e um fone quebrado, começou a gravar suas primeiras faixas e postá-las na internet. Rapidamente chamou atenção pela lírica afiada e pela emoção nas rimas.</p>
+
+    <h2>Ascensão</h2>
+    <p>Seu primeiro hit viralizou nas redes e chamou a atenção de artistas e produtores. Lançou um EP independente que conquistou fãs pelo país. A mistura de melodia com rimas profundas se tornou sua marca registrada.</p>
+
+    <h2>Superação e Força</h2>
+    <p>Kee Nola passou por dificuldades pessoais, enfrentando perdas e momentos difíceis. Mas sempre voltou mais forte, usando a dor como combustível para suas músicas.</p>
+
+    <h2>Legado em Construção</h2>
+    <p>Hoje, Kee Nola segue construindo sua trajetória no rap nacional, com milhões de streams e uma legião de fãs fiéis. Sua missão vai além da música: inspirar os jovens a acreditarem no próprio talento.</p>
+
+    <h2>Lançamentos Notáveis</h2>
+    <ul>
+      <li><strong>2022:</strong> EP "Raízes da Rua"</li>
+      <li><strong>2023:</strong> Single "No Topo"</li>
+      <li><strong>2024:</strong> Álbum "Entre Luzes e Sombras"</li>
+      <li><strong>2025:</strong> Turnê Nacional confirmada</li>
+    </ul>
+  </div>
+
+  <footer>
+     © 2025 Kee Nola Tribute | Desenvolvido por fãs
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('sideMenu');
+      menu.classList.toggle('open');
+    }
+  </script>
 
 </body>
 </html>
