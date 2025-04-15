@@ -1,223 +1,244 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HISTÓRIA DE KEE NOLA</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <title>Simulador de Futebol</title>
   <style>
     body {
-      margin: 0;
-      background: linear-gradient(to right, #330000, #660000, #990000);
-      color: #f2f2f2;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    header {
-      background: linear-gradient(90deg, #ff1a1a, #cc0000);
-      padding: 50px 20px 80px;
+      background: #e6f0ff;
+      color: #002244;
+      font-family: 'Segoe UI', sans-serif;
       text-align: center;
-      position: relative;
-      border-bottom-left-radius: 30px;
-      border-bottom-right-radius: 30px;
-      box-shadow: 0 0 20px #ff0000;
-    }
-
-    header h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 50px;
       margin: 0;
-      color: #fff;
-      text-shadow: 0 0 10px #ff4d4d;
-      animation: glow 2s ease-in-out infinite alternate;
+      padding: 0;
+      font-size: 24px;
     }
-
-    header p {
-      font-size: 18px;
-      color: #f5f5f5;
-      margin-top: 8px;
+    .container {
+      margin-top: 80px;
+      padding: 40px;
     }
-
-    @keyframes glow {
-      from {
-        text-shadow: 0 0 10px #ff4d4d;
-      }
-      to {
-        text-shadow: 0 0 20px #ff9999, 0 0 30px #ff3333;
-      }
-    }
-
-    .menu-btn {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      z-index: 1000;
-    }
-
-    .menu-btn span {
-      width: 25px;
-      height: 3px;
-      background-color: white;
-      border-radius: 2px;
-      transition: all 0.3s ease;
-      animation: flicker 1.5s infinite alternate;
-    }
-
-    @keyframes flicker {
-      0% { opacity: 1; }
-      50% { opacity: 0.5; }
-      100% { opacity: 1; }
-    }
-
-    .side-menu {
-      position: fixed;
-      top: 0;
-      left: -260px;
-      width: 260px;
-      height: 100%;
-      background-color: #330000;
-      padding-top: 70px;
-      transition: 0.3s;
-      z-index: 999;
-      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
-    }
-
-    .side-menu a {
-      display: block;
-      padding: 18px 30px;
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: 600;
-      border-bottom: 1px solid #550000;
-      transition: 0.3s;
-    }
-
-    .side-menu a:hover {
-      background-color: #660000;
-      color: #ffcccc;
-      text-shadow: 0 0 10px #ff3333;
-    }
-
-    .side-menu.open {
-      left: 0;
-    }
-
-    .profile-img {
-      width: 100%;
-      max-width: 400px;
-      display: block;
-      margin: 30px auto;
-      border-radius: 20px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
-    }
-
-    .content {
-      max-width: 1000px;
-      margin: auto;
-      padding: 20px;
-      line-height: 1.8;
-      font-size: 18px;
-    }
-
-    .content h2 {
-      color: #ff3333;
-      margin-top: 40px;
-      margin-bottom: 15px;
-      font-family: 'Orbitron', sans-serif;
+    select, button {
+      padding: 24px 36px;
+      margin: 20px;
       font-size: 26px;
-      text-shadow: 0 0 10px #ff3333;
+      border: none;
+      border-radius: 12px;
+      background-color: #0055aa;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
-
-    .content p {
-      text-align: justify;
+    button:hover {
+      background-color: #003f7f;
     }
-
-    ul {
-      list-style-type: square;
-      padding-left: 20px;
+    table {
+      width: 96%;
+      max-width: 1200px;
+      margin: 40px auto;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+      border-radius: 14px;
+      overflow: hidden;
+      font-size: 26px;
     }
-
-    ul li {
+    th, td {
+      border: 1px solid #ddd;
+      padding: 20px;
+    }
+    th {
+      background-color: #0055aa;
+      color: white;
+      font-size: 28px;
+    }
+    .hidden {
+      display: none;
+    }
+    #rodadaNumero {
+      font-size: 30px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    #meuTimeTitulo {
+      font-size: 34px;
       margin-bottom: 10px;
     }
-
-    footer {
-      text-align: center;
-      padding: 25px;
-      color: #fff;
-      font-size: 16px;
-      margin-top: 60px;
-      animation: blink 1s infinite;
+    h1, h2, h3 {
+      font-size: 34px;
+      margin: 20px 0;
     }
-
-    @keyframes blink {
-      0% { opacity: 1; }
-      50% { opacity: 0.2; }
-      100% { opacity: 1; }
+    #resultados p {
+      font-size: 26px;
+      margin: 10px 0;
+    }
+    #saldo {
+      font-size: 30px;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-
-  <div class="side-menu" id="sideMenu">
-    <a href="https://www.instagram.com/joao.7wzl" target="_blank">Instagram do Criador</a>
-    <a href="https://chat.whatsapp.com/GyrkZYjrmaRBJM9o9jm4p1" target="_blank">Grupo do WhatsApp do Criador</a>
-    <a href="https://whatsapp.com/channel/0029VawudkuJP210oo5vls10" target="_blank">Canal de Memes no WhatsApp</a>
+  <div class="container" id="escolhaTime">
+    <h1>Escolha seu time da Série B</h1>
+    <select id="timeSelect"></select><br>
+    <button onclick="comecarJogo()">Começar</button>
   </div>
 
-  <header>
-    <button class="menu-btn" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    <h1>HISTÓRIA DE KEE NOLA</h1>
-    <p>A trajetória de um talento promissor</p>
-  </header>
+  <div id="jogo" class="hidden">
+    <h1 id="meuTimeTitulo">Meu Time: </h1>
+    <div id="rodadaNumero">Rodada 1 de 30</div>
+    <div id="saldo">Saldo: R$50.000.000</div>
+    <button onclick="rodada()">Jogar Rodada</button>
+    <button onclick="alternarSerie()" id="btnSerie">Ver Série A</button>
+    <button onclick="comprarJogador()">Comprar Jogador (R$10.000.000)</button>
 
-  <img class="profile-img" src="https://blackstorage.store/midia/1744669018669.jpg" alt="Kee Nola">
+    <h2 id="tituloTabela">Série B</h2>
+    <table id="tabela">
+      <tr><th>#</th><th>Time</th><th>Pontos</th></tr>
+    </table>
 
-  <div class="content">
-    <h2>Início da Vida</h2>
-    <p>Kee Nola nasceu em uma cidade cheia de contrastes, onde desde cedo foi envolvido pelo som e pelas ruas. A paixão pela música começou ainda criança, inspirado pelos clássicos do rap e pelas batalhas de freestyle do bairro.</p>
-
-    <h2>Primeiros Passos</h2>
-    <p>Com um celular velho e um fone quebrado, começou a gravar suas primeiras faixas e postá-las na internet. Rapidamente chamou atenção pela lírica afiada e pela emoção nas rimas.</p>
-
-    <h2>Ascensão</h2>
-    <p>Seu primeiro hit viralizou nas redes e chamou a atenção de artistas e produtores. Lançou um EP independente que conquistou fãs pelo país. A mistura de melodia com rimas profundas se tornou sua marca registrada.</p>
-
-    <h2>Superação e Força</h2>
-    <p>Kee Nola passou por dificuldades pessoais, enfrentando perdas e momentos difíceis. Mas sempre voltou mais forte, usando a dor como combustível para suas músicas.</p>
-
-    <h2>Legado em Construção</h2>
-    <p>Hoje, Kee Nola segue construindo sua trajetória no rap nacional, com milhões de streams e uma legião de fãs fiéis. Sua missão vai além da música: inspirar os jovens a acreditarem no próprio talento.</p>
-
-    <h2>Lançamentos Notáveis</h2>
-    <ul>
-      <li><strong>2022:</strong> EP "Raízes da Rua"</li>
-      <li><strong>2023:</strong> Single "No Topo"</li>
-      <li><strong>2024:</strong> Álbum "Entre Luzes e Sombras"</li>
-      <li><strong>2025:</strong> Turnê Nacional confirmada</li>
-    </ul>
+    <div id="resultadosContainer">
+      <h3 id="tituloResultados">Resultados Série B</h3>
+      <div id="resultados"></div>
+    </div>
   </div>
-
-  <footer>
-     © 2025 Kee Nola Tribute | Desenvolvido por fãs
-  </footer>
 
   <script>
-    function toggleMenu() {
-      const menu = document.getElementById('sideMenu');
-      menu.classList.toggle('open');
-    }
-  </script>
+    const todosTimesB = ["Guarani", "Ceará", "Sport", "Vila Nova", "Ituano", "CRB", "Sampaio Corrêa", "Mirassol", "Ponte Preta", "Chapecoense", "Amazonas", "Londrina", "Tombense", "Avaí", "ABC", "Botafogo-SP", "Paysandu", "CSA", "Náutico", "Operário"];
+    const todosTimesA = ["Palmeiras", "Flamengo", "Atlético-MG", "Grêmio", "São Paulo", "Corinthians", "Fluminense", "Internacional", "Athletico-PR", "Fortaleza", "Cruzeiro", "Bahia", "Botafogo", "Bragantino", "Santos", "Cuiabá", "Vasco", "Coritiba", "Goiás", "América-MG"];
 
+    let timesB = [...todosTimesB];
+    let timesA = [...todosTimesA];
+    let tabelaB = {};
+    let tabelaA = {};
+    let rodadaAtual = 0;
+    let serieAtual = "B";
+    let meuTime = "";
+    let saldo = 50000000;
+
+    function iniciarTabelas() {
+      tabelaB = {};
+      tabelaA = {};
+      timesB.forEach(t => tabelaB[t] = { pontos: 0, forca: 1 });
+      timesA.forEach(t => tabelaA[t] = { pontos: 0, forca: 1 });
+    }
+
+    function preencherSelect() {
+      const select = document.getElementById("timeSelect");
+      timesB.forEach(time => {
+        const opt = document.createElement("option");
+        opt.value = time;
+        opt.textContent = time;
+        select.appendChild(opt);
+      });
+    }
+
+    function comecarJogo() {
+      meuTime = document.getElementById("timeSelect").value;
+      document.getElementById("meuTimeTitulo").innerText = "Meu Time: " + meuTime;
+      document.getElementById("escolhaTime").classList.add("hidden");
+      document.getElementById("jogo").classList.remove("hidden");
+      iniciarTabelas();
+      atualizarTabela();
+    }
+
+    function alternarSerie() {
+      serieAtual = serieAtual === "A" ? "B" : "A";
+      document.getElementById("tituloTabela").innerText = "Série " + serieAtual;
+      document.getElementById("tituloResultados").innerText = "Resultados Série " + serieAtual;
+      document.getElementById("btnSerie").innerText = "Ver Série " + (serieAtual === "A" ? "B" : "A");
+      atualizarTabela();
+    }
+
+    function rodada() {
+      if (rodadaAtual >= 30) return;
+      rodadaAtual++;
+      document.getElementById("rodadaNumero").innerText = `Rodada ${rodadaAtual} de 30`;
+      const serie = serieAtual === "A" ? [...timesA] : [...timesB];
+      const tabela = serieAtual === "A" ? tabelaA : tabelaB;
+      const resultados = [];
+
+      for (let i = 0; i < serie.length; i += 2) {
+        const time1 = serie[i];
+        const time2 = serie[i+1];
+        if (!time2) continue;
+        const forca1 = tabela[time1].forca;
+        const forca2 = tabela[time2].forca;
+        const gols1 = Math.round(Math.random() * forca1 * 2);
+        const gols2 = Math.round(Math.random() * forca2 * 2);
+
+        if (gols1 > gols2) tabela[time1].pontos += 3;
+        else if (gols2 > gols1) tabela[time2].pontos += 3;
+        else {
+          tabela[time1].pontos += 1;
+          tabela[time2].pontos += 1;
+        }
+
+        resultados.push(`${time1} ${gols1} x ${gols2} ${time2}`);
+      }
+
+      document.getElementById("resultados").innerHTML = resultados.map(r => `<p>${r}</p>`).join("");
+      atualizarTabela();
+
+      if (rodadaAtual === 30) {
+        promoverRebaixar();
+        alert("Temporada encerrada! Novas divisões definidas.");
+      }
+    }
+
+    function atualizarTabela() {
+      const tabela = serieAtual === "A" ? tabelaA : tabelaB;
+      const linhas = Object.entries(tabela).sort((a,b)=>b[1].pontos - a[1].pontos);
+      let html = "<tr><th>#</th><th>Time</th><th>Pontos</th></tr>";
+      linhas.forEach(([time, info], i) => {
+        html += `<tr><td>${i+1}</td><td>${time}</td><td>${info.pontos}</td></tr>`;
+      });
+      document.getElementById("tabela").innerHTML = html;
+    }
+
+    function promoverRebaixar() {
+      const ordenadoB = Object.entries(tabelaB).sort((a,b)=>b[1].pontos - a[1].pontos);
+      const ordenadoA = Object.entries(tabelaA).sort((a,b)=>b[1].pontos - a[1].pontos);
+
+      const promovidos = ordenadoB.slice(0, 4).map(x => x[0]);
+      const rebaixados = ordenadoA.slice(-4).map(x => x[0]);
+
+      // Atualiza listas
+      timesA = timesA.filter(t => !rebaixados.includes(t)).concat(promovidos).slice(0, 20);
+      timesB = timesB.filter(t => !promovidos.includes(t)).concat(rebaixados).slice(0, 20);
+
+      // Ganho ao subir ou ser rebaixado
+      if (promovidos.includes(meuTime)) {
+        saldo += 50000000;
+        alert("Você subiu para a Série A! Ganhou R$50.000.000");
+      }
+      if (rebaixados.includes(meuTime)) {
+        saldo += 1000000;
+        alert("Você foi rebaixado para a Série B, mas ganhou R$1.000.000");
+      }
+
+      iniciarTabelas();
+      rodadaAtual = 0;
+      document.getElementById("rodadaNumero").innerText = `Rodada 1 de 30`;
+      document.getElementById("saldo").innerText = `Saldo: R$${saldo.toLocaleString()}`;
+      atualizarTabela();
+    }
+
+    function comprarJogador() {
+      if (saldo >= 10000000) {
+        saldo -= 10000000;
+        const tabela = serieAtual === "A" ? tabelaA : tabelaB;
+        if (meuTime in tabela) {
+          tabela[meuTime].forca += 0.5;
+          alert("Jogador comprado! Força do seu time aumentada.");
+          document.getElementById("saldo").innerText = `Saldo: R$${saldo.toLocaleString()}`;
+        }
+      } else {
+        alert("Você não tem dinheiro suficiente para comprar um jogador.");
+      }
+    }
+
+    preencherSelect();
+  </script>
 </body>
 </html>
